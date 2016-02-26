@@ -1,0 +1,10 @@
+.idea/atlassian-ide-plugin.xml
+.idea/dataSources.ids
+.idea/dataSources.xml
+.idea/tasks.xml
+.idea/workspace.xml
+build
+node_modules
+public/**/*
+!public/components
+!public/test

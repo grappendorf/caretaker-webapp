@@ -1,0 +1,37 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <title>Caretaker</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <script src='../lib/webcomponentsjs/webcomponents-lite.min.js'></script>
+  <script src="../lib/jquery/dist/jquery.min.js"></script>
+  <script src="../javascripts/i18n.js"></script>
+  <script src="../javascripts/translations.js"></script>
+
+  <link rel="import" href="../lib/grapp-app-globals/grapp-app-globals.html">
+  <link rel="import" href="caretaker-app/caretaker-app.html">
+  <link rel="import" href="../stylesheets/polymer-theme.html">
+
+  <script>
+    Grapp.I18NJsBehavior.i18nSetDefaultLocale(navigator.language.split('-')[0]);
+    Grapp.I18NJsBehavior.i18nSetLocale(navigator.language.split('-')[0]);
+  </script>
+</head>
+
+  <body class="fullbleed unresolved" touch-action="auto">
+
+  <grapp-app-globals>
+    <grapp-app-globals-set key="apiUrl" value='{{getv "/api/url"}}'></grapp-app-globals-set>
+    <grapp-app-globals-set key="websocketUrl" value='{{getv "/websocket/url"}}'></grapp-app-globals-set>
+  </grapp-app-globals>
+
+  <caretaker-app></caretaker-app>
+
+</body>
+</html>
