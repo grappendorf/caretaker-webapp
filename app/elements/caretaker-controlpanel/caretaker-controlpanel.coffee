@@ -120,7 +120,7 @@ Polymer
       model: I18n.t 'models.widget.one'
       name: e.detail.title
     @$.deleteConfirmDialog.ask(message).then =>
-      @widgets.delete e.detail.id
+      @widgets.destroy e.detail.id
       @_reloadDashboard()
     , ->
 
