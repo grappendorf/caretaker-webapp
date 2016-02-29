@@ -29,7 +29,7 @@ Polymer
     mutationObserver = new MutationObserver (mutations) =>
       graphElements = ((n for n in m.addedNodes when n.nodeName == 'DIV')[0] for m in mutations)
       for element in graphElements
-        @_createGraph element
+        @_createGraph element if element
 
     mutationObserver.observe @$.graphContainer,
       attributes: false
