@@ -20,7 +20,9 @@
       }
     </style>
 
-    <grapp-app-globals id="globals"></grapp-app-globals>
+    <grapp-app-globals>
+      <grapp-app-globals-get key="apiUrl" value="{{apiUrl}}"></grapp-app-globals-get>
+    </grapp-app-globals>
 
     <grapp-iron-ajax id="devicesNames" base-url="[[apiUrl]]"
                      path="/devices/names" method="GET" handleAs="json"
@@ -37,9 +39,9 @@
       <div class="vertical layout">
 
         <paper-dropdown-menu id="device" label="device" autofocus>
-          <paper-menu class="dropdown-content" selected="{{widget.device.id}}" valueattr="data-device-id">
+          <paper-menu class="dropdown-content" selected="{{widget.device.id}}" attr-for-selected="data-device-id">
             <template is="dom-repeat" items="[[devices]]">
-              <paper-item data-device-id="[[item.id]]">[[item.name]]</paper-item>
+              <paper-item data-device-id$="[[item.id]]">[[item.name]]</paper-item>
             </template>
           </paper-menu>
         </paper-dropdown-menu>
