@@ -41,7 +41,7 @@
       <div class="vertical layout">
 
         <paper-dropdown-menu id="device" label="[[i18n('message.select_device_for_widget')]]" autofocus>
-          <paper-menu class="dropdown-content" selected="{{deviceId}}" value-attr="data-device-id">
+          <paper-menu class="dropdown-content" selected="{{deviceId}}" attr-for-selected="data-device-id">
             <template is="dom-repeat" items="[[devices]]">
               <paper-item data-device-id$="[[item.id]]">[[item.name]]</paper-item>
             </template>
@@ -53,11 +53,11 @@
         </paper-input>
 
         <label for="width">[[i18n('attributes.widget.width')]]</label>
-        <paper-slider id="width" pin snaps min="1" max="4" step="1" immediate-value="{{widget.width}}">
+        <paper-slider id="width" pin snaps min="1" max="4" step="1" value="[[width]]" immediate-value="{{width}}">
         </paper-slider>
 
         <label for="height">[[i18n('attributes.widget.height')]]</label>
-        <paper-slider id="height" pin snaps min="1" max="4" step="1" immediate-value="{{widget.height}}">
+        <paper-slider id="height" pin snaps min="1" max="4" step="1" value="[[height]]" immediate-value="{{height}}">
         </paper-slider>
 
       </div>

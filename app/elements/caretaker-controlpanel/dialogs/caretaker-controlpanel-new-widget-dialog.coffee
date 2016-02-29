@@ -5,7 +5,11 @@ Polymer
   behaviors: [Grapp.I18NJsBehavior]
 
   properties:
-    token: {type: String}
+    token: {type: String},
+    deviceId: {type: Number, value: null}
+    title: {type: String, value: null},
+    width: {type: Number, value: 1},
+    height: {type: Number, value: 1}
 
   observers: [
     '_validate(device.id)'
@@ -15,6 +19,10 @@ Polymer
     @processing = false
     @$.devicesNames.generateRequest()
     @name = ''
+    @title = ''
+    @deviceId = null
+    @width = 1
+    @height = 1
     promise = new Promise ((resolve, reject) ->
       @resolve = resolve
       @reject = reject
@@ -28,7 +36,7 @@ Polymer
 
   _ok: ->
     @processing = true
-    @resolve {device_id: @deviceId, title: @title}
+    @resolve {device_id: @deviceId, title: @title, width: @width, height: @height}
 
   _cancel: ->
     @end()
