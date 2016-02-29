@@ -54,7 +54,7 @@
             </button>
           </div>
           <div class="btn-group">
-            <button on-click="_newWidget" disabled$="[[! dashboard]]" class="btn btn-success">
+            <button on-click="_newWidget" disabled$="[[!dashboard]]" class="btn btn-success">
               <grapp-fa-icon icon="plus"></grapp-fa-icon>
               <span>[[i18n('action.add_widget')]]</span>
             </button>
@@ -86,7 +86,7 @@
       </template>
     </div>
 
-    <template is="dom-if" if="[[_isEmptyDashboard(state, dashboard, dashboard.widgets)]]">
+    <template is="dom-if" if="[[_isEmptyDashboard(state, dashboardId, dashboard.widgets)]]">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
           <div class="jumbotron">

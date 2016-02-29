@@ -8,6 +8,7 @@ Polymer
     token: {type: String}
     id: {type: Number}
     dashboardId: {type: String, value: 'default', observer: '_dashboardIdChanged'}
+    dashboard: {type: Object, value: null}
     state: {type: String, value: 'ok'}
     widgetComponents: {type: Array, value: -> []}
 
@@ -59,8 +60,7 @@ Polymer
     if @dashboardId? && @dashboardId != 'default'
       @_loadDashboard()
     else
-      @dashboard =
-        widgets: []
+      @dashboard = null
 
   _loadDashboard: ->
     @state = 'loading'
@@ -93,6 +93,7 @@ Polymer
       name: @dashboard.name
     @$.deleteConfirmDialog.ask(message).then =>
       @dashboards.destroy @dashboardId
+      @dashboardId = null
       @$.dashboardNamesRequest.generateRequest()
       @$.defaultDashboardRequest.generateRequest()
     , ->
@@ -146,8 +147,8 @@ Polymer
   _widgetsResourceParams: (dashboardId) ->
     {dashboardId: dashboardId, type: 'device_widgets'}
 
-  _isEmptyDashboard: (state, dashboard, widgets) ->
-    state == 'ok' && dashboard.id && widgets.length == 0
+  _isEmptyDashboard: (state, dashboardId, widgets) ->
+    state == 'ok' && dashboardId && widgets.length == 0
 
   _hasDashboards: (numDashboards) ->
     numDashboards > 0
