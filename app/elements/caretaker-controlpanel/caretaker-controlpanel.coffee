@@ -39,7 +39,10 @@ Polymer
     observer.observe @$.widgets, {childList: true, attributes: false}
 
   _defaultDashboardSucceeded: (e) ->
-    @dashboardId = e.detail.response.id
+    if e.detail.response.id?
+      @dashboardId = e.detail.response.id
+    else
+      @dashboardId = null
 
   _dashboardSucceeded: (e) ->
     @state = 'ok'
@@ -53,7 +56,11 @@ Polymer
       widget.updateState e.detail
 
   _dashboardIdChanged: ->
-    @_loadDashboard() unless @dashboardId == 'default'
+    if @dashboardId? && @dashboardId != 'default'
+      @_loadDashboard()
+    else
+      @dashboard =
+        widgets: []
 
   _loadDashboard: ->
     @state = 'loading'
@@ -139,8 +146,8 @@ Polymer
   _widgetsResourceParams: (dashboardId) ->
     {dashboardId: dashboardId, type: 'device_widgets'}
 
-  _isEmptyDashboard: (state, numWidgets) ->
-    state == 'ok' && numWidgets == 0
+  _isEmptyDashboard: (state, dashboard, widgets) ->
+    state == 'ok' && dashboard.id && widgets.length == 0
 
   _hasDashboards: (numDashboards) ->
     numDashboards > 0
