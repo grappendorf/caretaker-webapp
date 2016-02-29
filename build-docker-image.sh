@@ -1,3 +1,4 @@
 #!/bin/bash
 VERSION=$(cat bower.json |grep -o -P "(?<=\"version\": \")(.+)(?=\")")
-docker build -t grappendorf/caretaker-webapp:${VERSION} .
+DOCKERFILE=${1:-Dockerfile}
+docker build -t grappendorf/caretaker-webapp:${VERSION} -f $DOCKERFILE .
