@@ -88,10 +88,7 @@
 
     <template is="dom-if" if="[[_isEmptyDashboard(state, dashboard, dashboard.widgets)]]">
       <div class="row">
-        <div class="col-md-8 col-md-offset-4">
-
-          <br>
-
+        <div class="col-md-8 col-md-offset-2">
           <div class="jumbotron">
             <h1>
               <grapp-fa-icon icon="plus"></grapp-fa-icon>
@@ -116,7 +113,7 @@
 
     <template is="dom-if" if="[[!_hasDashboards(dashboardNames.length)]]">
       <div class="row">
-        <div class="col-md-8 col-md-offset-4">
+        <div class="col-md-8 col-md-offset-2">
           <div class="jumbotron">
             <h1>
               <grapp-fa-icon icon="th-large"></grapp-fa-icon>
