@@ -24,3 +24,6 @@ Polymer
 
   _typeName: (type) ->
     @i18n @_to_snake_case(type), 'models._.one'
+
+  _updateDevivesList: ->
+    @$.table.load()
