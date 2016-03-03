@@ -38,84 +38,14 @@ I18n.translations["en"] = I18n.extend((I18n.translations["en"] || {}), {
     "widget_properties": "Widget properties",
     "yes": "Yes"
   },
-  "activerecord": {
-    "attributes": {
-      "building": {"description": "Description", "name": "Name"},
-      "cipcam_device": {"password": "Password", "refresh_interval": "Refresh interval", "user": "User"},
-      "dashboard": {"default": "Default", "name": "Name", "user": {"name": "User"}},
-      "device": {"address": "Address", "description": "Description", "name": "Name", "type": "Type", "uuid": "UUID"},
-      "device_script": {
-        "description": "Description",
-        "enabled": "Enabled",
-        "name": "Name",
-        "name_hint": "Unique Script name",
-        "script": "Script",
-        "script_hint": "Write your Device Script here"
-      },
-      "easyvr_device": {"buttons_per_row": "Buttons per row", "num_buttons": "Number of buttons"},
-      "floor": {"description": "Description", "name": "Name"},
-      "philips_hue": {
-        "application_id": "Application ID",
-        "bridge": "Bridge",
-        "bridge_uri": "Bridge URI",
-        "light": {
-          "brightness": "Brightness",
-          "hue": "Hue",
-          "mode": "Color mode",
-          "name": "Name",
-          "reachable": "Reachable",
-          "saturation": "Saturation",
-          "type": "Type",
-          "uniqueid": "ID"
-        },
-        "lights": "Lights"
-      },
-      "remote_control_device": {"buttons_per_row": "Buttons per row", "num_buttons": "Number of buttons"},
-      "room": {"description": "Description", "number": "Number"},
-      "switch_device": {"num_switches": "Number of switches", "switches_per_row": "Switches per row"},
-      "user": {
-        "email": "Email",
-        "last_sign_in_at": "Last sign in",
-        "name": "Name",
-        "new_password": "New Password",
-        "password": "Password",
-        "password_confirmation": "Password confirmation",
-        "remember_me": "Remember me",
-        "roles": "Roles"
-      },
-      "widget": {"height": "Height", "title": "Title", "width": "Width"}
-    },
-    "errors": {
-      "messages": {
-        "record_invalid": "Validation failed: %{errors}",
-        "restrict_dependent_destroy": {
-          "many": "Cannot delete record because dependent %{record} exist",
-          "one": "Cannot delete record because a dependent %{record} exists"
-        }
-      }
-    },
-    "models": {
-      "building": {"one": "Building", "other": "Buildings"},
-      "cipcam_device": {"one": "Camera", "other": "Cameras"},
-      "dashboard": {"one": "Dashboard", "other": "Dashboards"},
-      "device": {"one": "Device", "other": "Devices"},
-      "device_script": {"one": "Device Script", "other": "Device Scripts"},
-      "dimmer_device": {"one": "Dimmer", "other": "Dimmer"},
-      "dimmer_rgb_device": {"one": "RGB Dimmer", "other": "RGB Dimmer"},
-      "easyvr_device": {"one": "EasyVR", "other": "EasyVRs"},
-      "floor": {"one": "Floor", "other": "Floors"},
-      "philips_hue_light_device": {"one": "Philips Hue Light", "other": "Philips Hue Lig ht"},
-      "reflow_oven_device": {"one": "Reflow Oven", "other": "Reflow Ovens"},
-      "remote_control_device": {"one": "Remote Control", "other": "Remote Controls"},
-      "room": {"one": "Room", "other": "Rooms"},
-      "rotary_knob_device": {"one": "Rotary Knob", "other": "Rotary Knob"},
-      "sensor_device": {"one": "Sensor", "other": "Sensors"},
-      "switch_device": {"one": "Switch", "other": "Switches"},
-      "user": {"one": "User", "other": "Users"},
-      "widget": {"one": "Widget", "other": "Widgets"}
-    }
-  },
   "attributes": {
+    "device_action": {
+      "description": "Description",
+      "name": "Name",
+      "name_hint": "Unique Action name",
+      "script": "Script",
+      "script_hint": "Write your Action Script here"
+    },
     "building": {"description": "Description", "name": "Name"},
     "cipcam_device": {"password": "Password", "refresh_interval": "Refresh interval", "user": "User"},
     "dashboard": {"default": "Default", "name": "Name", "user": {"name": "User"}},
@@ -367,7 +297,8 @@ I18n.translations["en"] = I18n.extend((I18n.translations["en"] || {}), {
     "cipcam_device": {"one": "Camera", "other": "Cameras"},
     "dashboard": {"one": "Dashboard", "other": "Dashboards"},
     "device": {"one": "Device", "other": "Devices"},
-    "device_script": {"one": "Device Script", "other": "Device Scripts"},
+    "device_actions": {"one": "Action", "other": "Actions"},
+    "device_script": {"one": "Script", "other": "Scripts"},
     "dimmer_device": {"one": "Dimmer", "other": "Dimmer"},
     "dimmer_rgb_device": {"one": "RGB Dimmer", "other": "RGB Dimmer"},
     "easyvr_device": {"one": "EasyVR", "other": "EasyVRs"},
@@ -497,84 +428,14 @@ I18n.translations["de"] = I18n.extend((I18n.translations["de"] || {}), {
     "widget_properties": "Widget Eigenschaften",
     "yes": "Ja"
   },
-  "activerecord": {
-    "attributes": {
-      "building": {"description": "Beschreibung", "name": "Name"},
-      "cipcam_device": {"password": "Passwort", "refresh_interval": "Aktualisierung", "user": "Benutzer"},
-      "dashboard": {"default": "Standard", "name": "Name", "user": {"name": "Benutzer"}},
-      "device": {"address": "Adresse", "description": "Beschreibung", "name": "Name", "type": "Typ", "uuid": "UUID"},
-      "device_script": {
-        "description": "Beschreibung",
-        "enabled": "Aktiv",
-        "name": "Name",
-        "name_hint": "Eindeutiger Skript-Name",
-        "script": "Skript",
-        "script_hint": "Hier können Sie Ihr Geräte-Skript schreiben"
-      },
-      "easyvr_device": {"buttons_per_row": "Tasten pro Zeile", "num_buttons": "Anzahl der Tasten"},
-      "floor": {"description": "Beschreibung", "name": "Name"},
-      "philips_hue": {
-        "application_id": "Applikations ID",
-        "bridge": "Bridge",
-        "bridge_uri": "Bridge URI",
-        "light": {
-          "brightness": "Helligkeit",
-          "hue": "Farbton",
-          "mode": "Modus",
-          "name": "Name",
-          "reachable": "Erreichbar",
-          "saturation": "Sättigung",
-          "type": "Typ",
-          "uniqueid": "ID"
-        },
-        "lights": "Lampen"
-      },
-      "remote_control_device": {"buttons_per_row": "Tasten pro Zeile", "num_buttons": "Anzahl der Tasten"},
-      "room": {"description": "Beschreibung", "number": "Nummer"},
-      "switch_device": {"num_switches": "Anzahl der Schalter", "switches_per_row": "Anzahl Schalter pro Zeile"},
-      "user": {
-        "email": "Email",
-        "last_sign_in_at": "Letzte Anmeldung",
-        "name": "Name",
-        "new_password": "New Password",
-        "password": "Passwort",
-        "password_confirmation": "Passwort bestätigen",
-        "remember_me": "Angemeldet bleiben",
-        "roles": "Rollen"
-      },
-      "widget": {"height": "Höhe", "title": "Title", "width": "Breite"}
-    },
-    "errors": {
-      "messages": {
-        "record_invalid": "Validation failed: %{errors}",
-        "restrict_dependent_destroy": {
-          "many": "Cannot delete record because dependent %{record} exist",
-          "one": "Cannot delete record because a dependent %{record} exists"
-        }
-      }
-    },
-    "models": {
-      "building": {"one": "Gebäude", "other": "Gebäude"},
-      "cipcam_device": {"one": "Kamera", "other": "Kameras"},
-      "dashboard": {"one": "Dashboard", "other": "Dashboards"},
-      "device": {"one": "Gerät", "other": "Geräte"},
-      "device_script": {"one": "Geräte-Skript", "other": "Geräte-Skripte"},
-      "dimmer_device": {"one": "Dimmer", "other": "Dimmer"},
-      "dimmer_rgb_device": {"one": "RGB Dimmer", "other": "RGB Dimmer"},
-      "easyvr_device": {"one": "EasyVR", "other": "EasyVRs"},
-      "floor": {"one": "Etage", "other": "Etagen"},
-      "philips_hue_light_device": {"one": "Philips Hue Light", "other": "Philips Hue Lights"},
-      "reflow_oven_device": {"one": "Reflow Oven", "other": "Reflow Ovens"},
-      "remote_control_device": {"one": "Fernsteuerung", "other": "Fernsteuerungen"},
-      "room": {"one": "Raum", "other": "Räume"},
-      "rotary_knob_device": {"one": "Drehknopf", "other": "Drehknopf"},
-      "sensor_device": {"one": "Sensor", "other": "Sensoren"},
-      "switch_device": {"one": "Schalter", "other": "Schalter"},
-      "user": {"one": "Benutzer", "other": "Benutzer"},
-      "widget": {"one": "Widget", "other": "Widgets"}
-    }
-  },
   "attributes": {
+    "device_action": {
+      "description": "Beschreibung",
+      "name": "Name",
+      "name_hint": "Eindeutiger Skript-Name",
+      "script": "Skript",
+      "script_hint": "Hier können Sie Ihr Aktions-Skript schreiben"
+    },
     "building": {"description": "Beschreibung", "name": "Name"},
     "cipcam_device": {"password": "Passwort", "refresh_interval": "Aktualisierung", "user": "Benutzer"},
     "dashboard": {"default": "Standard", "name": "Name", "user": {"name": "Benutzer"}},
@@ -827,7 +688,8 @@ I18n.translations["de"] = I18n.extend((I18n.translations["de"] || {}), {
     "cipcam_device": {"one": "Kamera", "other": "Kameras"},
     "dashboard": {"one": "Dashboard", "other": "Dashboards"},
     "device": {"one": "Gerät", "other": "Geräte"},
-    "device_script": {"one": "Geräte-Skript", "other": "Geräte-Skripte"},
+    "device_action": {"one": "Aktion", "other": "Aktionen"},
+    "device_script": {"one": "Skript", "other": "Skripte"},
     "dimmer_device": {"one": "Dimmer", "other": "Dimmer"},
     "dimmer_rgb_device": {"one": "RGB Dimmer", "other": "RGB Dimmer"},
     "easyvr_device": {"one": "EasyVR", "other": "EasyVRs"},

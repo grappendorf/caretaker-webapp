@@ -1,0 +1,39 @@
+<link rel="import" href="../../lib/grapp-app-globals/grapp-app-globals.html">
+<link rel="import" href="../../lib/grapp-breadcrumbs/grapp-breadcrumbs.html">
+<link rel="import" href="../../lib/grapp-i18n-js/grapp-i18n-js.html">
+<link rel="import" href="../../lib/grapp-rest-resource/grapp-rest-resource.html">
+<link rel="import" href="../caretaker-data-editor/caretaker-data-editor.html">
+
+<dom-module id="caretaker-device_actions-editor">
+
+  <template>
+
+    <grapp-app-globals>
+      <grapp-app-globals-get key="apiUrl" value="{{apiUrl}}"></grapp-app-globals-get>
+      <grapp-app-globals-set key="appTitle" value="models.device_action.other"></grapp-app-globals-set>
+      <grapp-app-globals-set key="appModule" value="devices"></grapp-app-globals-set>
+      <grapp-app-globals-set key="appFunction" value="device_actions"></grapp-app-globals-set>
+    </grapp-app-globals>
+
+    <grapp-rest-resource base-url="[[apiUrl]]" path="/device_actions/:id" resource="{{device_actions}}"
+                         token="[[token]]"></grapp-rest-resource>
+
+    <grapp-breadcrumbs path="/device_actions">
+      <grapp-breadcrumb href="/#/device_actions">[[i18n('models.device_action.other')]]</grapp-breadcrumb>
+      <grapp-breadcrumb>{{device_action.name}}</grapp-breadcrumb>
+    </grapp-breadcrumbs>
+
+    <caretaker-data-editor id="editor" model="device_action" resource="{{device_actions}}"
+                           item="{{device_action}}" on-data-editor-back="_back">
+
+      <caretaker-data-field name="name"></caretaker-data-field>
+      <caretaker-data-field name="description"></caretaker-data-field>
+      <caretaker-data-field name="script" type="code"></caretaker-data-field>
+
+    </caretaker-data-editor>
+
+  </template>
+
+  <script src="caretaker-device_actions-editor.js"></script>
+
+</dom-module>

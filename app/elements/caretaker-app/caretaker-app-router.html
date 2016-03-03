@@ -1,5 +1,7 @@
 <link rel="import" href="../../lib/app-router/app-router.html">
 <link rel="import" href="../caretaker-app-dashboard/caretaker-app-dashboard.html">
+<link rel="import" href="../caretaker-manage-device_actions/caretaker-device_actions-list.html">
+<link rel="import" href="../caretaker-manage-device_actions/caretaker-device_actions-editor.html">
 <link rel="import" href="../caretaker-manage-devices/caretaker-devices-list.html">
 <link rel="import" href="../caretaker-manage-devices/caretaker-devices-editor.html">
 <link rel="import" href="../caretaker-manage-device-scripts/caretaker-device-scripts-list.html">
@@ -24,6 +26,8 @@
 
     <app-router id="router" on-before-data-binding="bindRouteAttributes">
       <app-route path="/controlpanel" element="caretaker-app-dashboard"></app-route>
+      <app-route path="/device_actions" element="caretaker-device_actions-list" ></app-route>
+      <app-route path="/device_actions/:id" element="caretaker-device_actions-editor" ></app-route>
       <app-route path="/devices" element="caretaker-devices-list" ></app-route>
       <app-route path="/devices/:id" element="caretaker-devices-editor" ></app-route>
       <app-route path="/devices/new/:type" element="caretaker-devices-editor" ></app-route>
