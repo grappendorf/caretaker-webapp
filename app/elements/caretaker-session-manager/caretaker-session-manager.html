@@ -24,8 +24,8 @@
                        on-iron-localstorage-load="_tokenLoaded"
                        on-iron-localstorage-load-empty="_tokenLoaded"></iron-localstorage>
 
-    <grapp-iron-ajax id="signInRequest" base-url="[[apiUrl]]" path="/session/sign_in"
-                     query="user[email]=:email&user[password]=:password"
+    <grapp-iron-ajax id="signInRequest" base-url="[[apiUrl]]" path="/sessions"
+                     query="email=:email&password=:password"
                      params="[[_signInParams(email, password)]]"
                      method="POST" handleAs="json"
                      on-response="_loginSucceeded" on-error="_loginFailed">
