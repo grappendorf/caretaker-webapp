@@ -5,7 +5,6 @@
 <link rel="import" href="../../lib/grapp-fa-icon/grapp-fa-icon.html">
 <link rel="import" href="../../lib/grapp-i18n-js/grapp-i18n-js.html">
 <link rel="import" href="../../lib/grapp-template-ref/grapp-template-ref.html">
-<link rel="import" href="../../lib/grapp-websocket-rails/grapp-websocket-rails.html">
 <link rel="import" href="caretaker-controlpanel-widget.html">
 <link rel="import" href="widgets/caretaker-widget-cipcamdevice.html">
 <link rel="import" href="widgets/caretaker-widget-dimmerdevice.html">
@@ -180,12 +179,6 @@
                          update-path="/dashboards/:dashboardId/:type/:id"
                          params="[[_widgetsResourceParams(dashboardId)]]"
                          resource="{{widgets}}" token="[[token]]"></grapp-rest-resource>
-
-    <grapp-websocket-rails-subscribe channel="devices" websocket="[[websocket]]">
-      <grapp-websocket-rails-bind event="state" on-data="_updateDeviceState"></grapp-websocket-rails-bind>
-      <grapp-websocket-rails-bind event="connection"
-                                  on-data="_updateDeviceConnection"></grapp-websocket-rails-bind>
-    </grapp-websocket-rails-subscribe>
 
     <caretaker-controlpanel-new-dashboard-dialog id="newDashboardDialog">
     </caretaker-controlpanel-new-dashboard-dialog>

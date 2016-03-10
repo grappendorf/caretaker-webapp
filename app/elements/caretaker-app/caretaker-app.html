@@ -5,7 +5,7 @@
 <link rel="import" href="../../lib/grapp-app-globals/grapp-app-globals.html">
 <link rel="import" href="../../lib/grapp-i18n-js/grapp-i18n-js.html">
 <link rel="import" href="../../lib/grapp-launcher-tile/grapp-launcher-tile.html">
-<link rel="import" href="../../lib/grapp-websocket-rails/grapp-websocket-rails.html">
+<link rel="import" href="../../lib/web-socket/web-socket.html">
 <link rel="import" href="../caretaker-app-toolbar/caretaker-app-toolbar.html">
 <link rel="import" href="../caretaker-app-drawer/caretaker-app-drawer.html">
 <link rel="import" href="../caretaker-session-manager/caretaker-session-manager.html">
@@ -27,8 +27,7 @@
                                user="{{user}}" token="{{token}}"
                                on-loaded="sessionManagerLoaded"></caretaker-session-manager>
 
-    <grapp-websocket-rails url="[[websocketUrl]]" websocket="{{websocket}}">
-    </grapp-websocket-rails>
+    <web-socket url="[[websocketUrl]]" json on-open="_websocketOpen"></web-socket>
 
     <paper-drawer-panel id="drawer">
 

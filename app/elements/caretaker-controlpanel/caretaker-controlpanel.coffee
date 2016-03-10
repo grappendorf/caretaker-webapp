@@ -12,6 +12,10 @@ Polymer
     state: {type: String, value: 'ok'}
     widgetComponents: {type: Array, value: -> []}
 
+  observers: [
+    '_initWebsocket(websocket)'
+  ]
+
   attached: ->
     @packery = new Packery @$.widgets,
       rowHeight: 220
@@ -50,11 +54,6 @@ Polymer
     @dashboard = e.detail.response
 
   _dashboardFailed: (e) ->
-
-  _updateDeviceState: (e) ->
-    widgets = @$.widgets.querySelectorAll @_widgetComponentName(e.detail.type)
-    for widget in widgets
-      widget.updateState e.detail
 
   _dashboardIdChanged: ->
     if @dashboardId? && @dashboardId != 'default'
@@ -124,11 +123,6 @@ Polymer
       @_reloadDashboard()
     , ->
 
-  _updateDeviceConnection: (e) ->
-    widgets = @$.widgets.querySelectorAll "caretaker-controlpanel-widget"
-    for w in widgets
-      w.widget.device.connected = e.detail.connected if w.widget.device.id == e.detail.id
-
   _isLoadingState: (state) ->
     state == 'loading'
 
@@ -152,3 +146,16 @@ Polymer
 
   _hasDashboards: (numDashboards) ->
     numDashboards > 0
+
+  _initWebsocket: (websocket) ->
+    websocket.addEventListener 'message', (e) =>
+      switch e.detail.event
+        when 'devices.state'
+          widgets = @$.widgets.querySelectorAll @_widgetComponentName(e.detail.data.type)
+          for widget in widgets
+            widget.updateState e.detail.data
+        when 'devices.connection'
+          widgets = @$.widgets.querySelectorAll "caretaker-controlpanel-widget"
+          for w in widgets
+            w.widget.device.connected = e.detail.data.connected if w.widget.device.id == e.detail.data.id
+

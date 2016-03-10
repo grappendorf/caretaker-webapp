@@ -7,6 +7,10 @@ Polymer
   properties:
     token: {type: String}
 
+  observers: [
+    '_initWebsocket(websocket)'
+  ]
+
   attached: ->
     @async ->
       @$.table.load()
@@ -27,3 +31,9 @@ Polymer
 
   _updateDevivesList: ->
     @$.table.load()
+
+  _initWebsocket: (websocket) ->
+    websocket.addEventListener 'message', (e) =>
+      switch e.detail.event
+        when 'devices.connection'
+          @_updateDevivesList()

@@ -2,7 +2,6 @@
 <link rel="import" href="../../lib/grapp-breadcrumbs/grapp-breadcrumbs.html">
 <link rel="import" href="../../lib/grapp-i18n-js/grapp-i18n-js.html">
 <link rel="import" href="../../lib/grapp-rest-resource/grapp-rest-resource.html">
-<link rel="import" href="../../lib/grapp-websocket-rails/grapp-websocket-rails.html">
 <link rel="import" href="../caretaker-data-table/caretaker-data-table.html">
 <link rel="import" href="caretaker-devices-new-dialog.html">
 
@@ -17,11 +16,6 @@
       <grapp-app-globals-set key="appFunction" value="devices"></grapp-app-globals-set>
       <grapp-app-globals-get key="websocket" value="{{websocket}}"></grapp-app-globals-get>
     </grapp-app-globals>
-
-    <grapp-websocket-rails-subscribe channel="devices" websocket="[[websocket]]">
-      <grapp-websocket-rails-bind event="register" on-data="_updateDevivesList"></grapp-websocket-rails-bind>
-      <grapp-websocket-rails-bind event="connection" on-data="_updateDevivesList"></grapp-websocket-rails-bind>
-    </grapp-websocket-rails-subscribe>
 
     <grapp-rest-resource base-url="[[apiUrl]]" path="/devices/:id" resource="{{devices}}"
                          token="[[token]]"></grapp-rest-resource>

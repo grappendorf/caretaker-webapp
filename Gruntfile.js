@@ -113,7 +113,7 @@ module.exports = function(grunt) {
             options: {
               start: {
                 "Env": [
-                  "WEBSOCKET_URL=127.0.0.1:3000/websocket",
+                  "WEBSOCKET_URL=ws://127.0.0.1:3000/websocket",
                   "API_URL=http://127.0.0.1:3000"
                 ],
                 "PortBindings": {"80/tcp": [{"HostPort": "8080"}]}
@@ -170,7 +170,7 @@ module.exports = function(grunt) {
         src: 'app/index.html.tmpl',
         dest: 'public/index.html',
         replacements: [{
-          from: /{{getv "\/websocket\/url"}}/, to: '127.0.0.1:3000/websocket'
+          from: /{{getv "\/websocket\/url"}}/, to: 'ws://127.0.0.1:3000/websocket'
         }, {
           from: /{{getv "\/api\/url"}}/, to: 'http://127.0.0.1:3000'
         }]

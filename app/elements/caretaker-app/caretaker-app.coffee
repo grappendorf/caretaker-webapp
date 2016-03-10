@@ -5,6 +5,10 @@ Polymer
   properties:
     app: {type: Object}
 
+  observers: [
+    '_connectWebsocket(websocketUrl)'
+  ]
+
   ready: ->
     @app = @
 
@@ -31,3 +35,11 @@ Polymer
 
   bindRouteAttributes: (e) ->
     e.detail.model.sessionManager = @sessionManager
+
+  _connectWebsocket: () ->
+    @$$('web-socket').open()
+
+  _websocketOpen: () ->
+    @websocket = @$$('web-socket')
+    @websocket.__proto__.trigger = (event, data) =>
+      @websocket.send token: @token, event: event, data: data
