@@ -19,19 +19,24 @@ Polymer
     @updateFields()
 
   load: (id) ->
-    @id = id
-    @modified = false
-    @valid = true
-    for fieldset in @fieldsets
-      for field in fieldset.fields
-        field.error = null
-    if @_isValidItemId id
-      @processing = true
-      @resource.show(id).then (result) =>
-        @processing = false
-        @item = result.data
-    else
-      @item = {}
+    new Promise (resolve, reject) =>
+      @id = id
+      @modified = false
+      @valid = true
+      for fieldset in @fieldsets
+        for field in fieldset.fields
+          field.error = null
+      if @_isValidItemId id
+        @processing = true
+        @resource.show(id).then (result) =>
+          @processing = false
+          @item = result.data
+          resolve(@item)
+        , (error) =>
+          reject(error)
+      else
+        @item = {}
+        resolve(@item)
 
   show: (item) ->
     @modified = false

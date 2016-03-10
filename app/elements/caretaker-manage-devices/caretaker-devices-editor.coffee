@@ -7,6 +7,7 @@ Polymer
   properties:
     token: {type: String}
     id: {type: Number}
+    type: {type: String}
 
   observers: [
     '_load(apiUrl, id)'
@@ -15,9 +16,11 @@ Polymer
   ]
 
   _load: ->
-    @$.editor.load @id
+    @$.editor.load(@id).then (item) =>
+      @type = item.type
 
   _newDevice: ->
+    return if @id
     @devices.new().then (success) =>
       @$.editor.show success.data
 
@@ -25,10 +28,10 @@ Polymer
     @router.go "/devices"
 
   _devicesParams: (type) ->
-    {type: type}
+    {type: @_pluralize(@_to_snake_case(type))}
 
   _imagePath: (imageName) ->
     "/images/#{imageName}"
 
-  _updateFields: (deviceType) ->
+  _updateFields: ->
     @$.editor.updateFields()

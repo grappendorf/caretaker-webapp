@@ -15,7 +15,8 @@
       <grapp-app-globals-set key="appFunction" value="devices"></grapp-app-globals-set>
     </grapp-app-globals>
 
-    <grapp-rest-resource base-url="[[apiUrl]]" path="/devices/:id" new-path="/:type" create-path="/:type"
+    <grapp-rest-resource base-url="[[apiUrl]]" path="/devices/:id"
+                         new-path="/:type" create-path="/:type" update-path="/:type/:id"
                          params="[[_devicesParams(type)]]" resource="{{devices}}"
                          token="[[token]]"></grapp-rest-resource>
 
