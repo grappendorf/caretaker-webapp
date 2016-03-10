@@ -76,7 +76,6 @@ Polymer
         @modified = false
         @fire 'data-editor-back'
       , (response) =>
-        console.log '*'
         for fieldset, fieldsetIdx in @fieldsets
           for field, fieldIdx in fieldset.fields when field.name of response.data.errors
             @set "fieldsets.#{fieldsetIdx}.fields.#{fieldIdx}.error", response.data.errors[field.name]
