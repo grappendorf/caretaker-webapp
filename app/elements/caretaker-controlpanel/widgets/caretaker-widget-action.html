@@ -1,0 +1,24 @@
+<link rel="import" href="../../lib/grapp-app-globals/grapp-app-globals.html">
+<link rel="import" href="../../lib/grapp-iron-ajax/grapp-iron-ajax.html">
+
+<dom-module id="caretaker-widget-action">
+
+  <link rel="import" type="css" href="caretaker-widget-action.css">
+
+  <template>
+    <grapp-app-globals>
+      <grapp-app-globals-get key="apiUrl" value="{{apiUrl}}"></grapp-app-globals-get>
+    </grapp-app-globals>
+
+    <grapp-iron-ajax id="executeActionRequest"
+                     base-url="[[apiUrl]]" path="/device_actions/:id/execute"
+                     params="[[_executeActionParams(widget.action.id)]]"
+                     method="PUT" handleAs="json" token="[[token]]">
+    </grapp-iron-ajax>
+
+    <paper-button on-click="_executeAction">[[widget.action.name]]</paper-button>
+  </template>
+
+  <script src="caretaker-widget-action.js"></script>
+
+</dom-module>

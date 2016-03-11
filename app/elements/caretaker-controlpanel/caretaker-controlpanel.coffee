@@ -129,8 +129,10 @@ Polymer
   _isStateError: (state) ->
     state == 'error'
 
-  _widgetTemplateBinding: (widget, websocket) ->
-    {widget: widget, websocket: websocket}
+  _widgetTemplateBinding: (widget, websocket, token) ->
+    widget: widget
+    websocket: websocket
+    token: token
 
   _widgetComponentName: (widgetType) ->
     "caretaker-widget-#{widgetType.toLowerCase()}"

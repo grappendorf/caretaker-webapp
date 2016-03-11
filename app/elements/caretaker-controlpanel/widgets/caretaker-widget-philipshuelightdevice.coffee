@@ -7,6 +7,7 @@ Polymer
   properties:
     widget: {type: Object}
     websocket: {type: Object}
+    token: {type: String}
 
   attached: ->
     @device = @widget.device

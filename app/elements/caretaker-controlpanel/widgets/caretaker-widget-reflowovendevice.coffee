@@ -5,6 +5,7 @@ Polymer
   properties:
     widget: {type: Object}
     websocket: {type: Object}
+    token: {type: String}
     initialData: {type: Object, value: -> [time: (new Date).getTime(), y: 0]}
 
   attached: ->

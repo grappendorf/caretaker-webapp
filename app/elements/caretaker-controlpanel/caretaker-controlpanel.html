@@ -16,6 +16,7 @@
 <link rel="import" href="widgets/caretaker-widget-switchdevice.html">
 <link rel="import" href="widgets/caretaker-widget-sensordevice.html">
 <link rel="import" href="widgets/caretaker-widget-weather.html">
+<link rel="import" href="widgets/caretaker-widget-action.html">
 <link rel="import" href="dialogs/caretaker-controlpanel-new-dashboard-dialog.html">
 <link rel="import" href="dialogs/caretaker-controlpanel-edit-dashboard-dialog.html">
 <link rel="import" href="dialogs/caretaker-controlpanel-new-widget-dialog.html">
@@ -79,7 +80,7 @@
       <template is="dom-repeat" items="[[dashboard.widgets]]" as="widget">
         <caretaker-controlpanel-widget widget="[[widget]]">
           <grapp-template-ref ref="[[widget.type]]"
-                              bind="[[_widgetTemplateBinding(widget, websocket)]]">
+                              bind="[[_widgetTemplateBinding(widget, websocket, token)]]">
           </grapp-template-ref>
         </caretaker-controlpanel-widget>
       </template>
@@ -198,57 +199,75 @@
     </grapp-confirmation-dialog>
 
     <template is="dom-template" id="CipcamDeviceWidget">
-      <caretaker-widget-cipcamdevice widget="[[widget]]" websocket="[8websocket]]"
-                                     token="[[token]]"></caretaker-widget-cipcamdevice>
+      <caretaker-widget-cipcamdevice
+          widget="[[widget]]" websocket="[[websocket]]" token="[[token]]">
+      </caretaker-widget-cipcamdevice>
     </template>
 
     <template is="dom-template" id="DimmerDeviceWidget">
-      <caretaker-widget-dimmerdevice widget="[[widget]]"
-                                     websocket="[[websocket]]"></caretaker-widget-dimmerdevice>
+      <caretaker-widget-dimmerdevice
+          widget="[[widget]]" websocket="[[websocket]]" token="[[token]]">
+      </caretaker-widget-dimmerdevice>
     </template>
 
     <template is="dom-template" id="DimmerRgbDeviceWidget">
-      <caretaker-widget-dimmerrgbdevice widget="[[widget]]"
-                                        websocket="[[websocket]]"></caretaker-widget-dimmerrgbdevice>
+      <caretaker-widget-dimmerrgbdevice
+          widget="[[widget]]" websocket="[[websocket]]" token="[[token]]">
+      </caretaker-widget-dimmerrgbdevice>
     </template>
 
     <template is="dom-template" id="EasyvrDeviceWidget">
-      <caretaker-widget-easyvrdevice widget="[[widget]]"
-                                     websocket="[[websocket]]"></caretaker-widget-easyvrdevice>
+      <caretaker-widget-easyvrdevice
+          widget="[[widget]]" websocket="[[websocket]]" token="[[token]]">
+      </caretaker-widget-easyvrdevice>
     </template>
 
     <template is="dom-template" id="PhilipsHueLightDeviceWidget">
-      <caretaker-widget-philipshuelightdevice widget="[[widget]]"
-                                              websocket="[[websocket]]"></caretaker-widget-philipshuelightdevice>
+      <caretaker-widget-philipshuelightdevice
+          widget="[[widget]]" websocket="[[websocket]]" token="[[token]]">
+      </caretaker-widget-philipshuelightdevice>
     </template>
 
     <template is="dom-template" id="SwitchDeviceWidget">
-      <caretaker-widget-switchdevice widget="[[widget]]"
-                                     websocket="[[websocket]]"></caretaker-widget-switchdevice>
+      <caretaker-widget-switchdevice
+          widget="[[widget]]" websocket="[[websocket]]" token="[[token]]">
+      </caretaker-widget-switchdevice>
     </template>
 
     <template is="dom-template" id="RemoteControlDeviceWidget">
-      <caretaker-widget-remotecontroldevice widget="[[widget]]"
-                                            websocket="[[websocket]]"></caretaker-widget-remotecontroldevice>
+      <caretaker-widget-remotecontroldevice
+          widget="[[widget]]" websocket="[[websocket]]" token="[[token]]">
+      </caretaker-widget-remotecontroldevice>
     </template>
 
     <template is="dom-template" id="ReflowOvenDeviceWidget">
-      <caretaker-widget-reflowovendevice widget="[[widget]]"
-                                         websocket="[[websocket]]"></caretaker-widget-reflowovendevice>
+      <caretaker-widget-reflowovendevice
+          widget="[[widget]]" websocket="[[websocket]]" token="[[token]]">
+      </caretaker-widget-reflowovendevice>
     </template>
 
     <template is="dom-template" id="RotaryKnobDeviceWidget">
-      <caretaker-widget-rotaryknobdevice widget="[[widget]]"
-                                         websocket="[[websocket]]"></caretaker-widget-rotaryknobdevice>
+      <caretaker-widget-rotaryknobdevice
+          widget="[[widget]]" websocket="[[websocket]]" token="[[token]]">
+      </caretaker-widget-rotaryknobdevice>
     </template>
 
     <template is="dom-template" id="SensorDeviceWidget">
-      <caretaker-widget-sensordevice widget="[[widget]]"
-                                     websocket="[[websocket]]"></caretaker-widget-sensordevice>
+      <caretaker-widget-sensordevice
+          widget="[[widget]]" websocket="[[websocket]]" token="[[token]]">
+      </caretaker-widget-sensordevice>
     </template>
 
     <template is="dom-template" id="WeatherWidget">
-      <caretaker-widget-weather widget="[[widget]]"></caretaker-widget-weather>
+      <caretaker-widget-weather
+          widget="[[widget]]" websocket="[[websocket]]" token="[[token]]">
+      </caretaker-widget-weather>
+    </template>
+
+    <template is="dom-template" id="ActionWidget">
+      <caretaker-widget-action
+          widget="[[widget]]" websocket="[[websocket]]" token="[[token]]">
+      </caretaker-widget-action>
     </template>
 
   </template>
