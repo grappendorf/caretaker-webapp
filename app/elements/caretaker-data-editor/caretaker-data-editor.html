@@ -51,12 +51,23 @@
             <template is="dom-repeat" items="[[fieldset.fields]]" as="field">
               <div class$="[[_fieldClass(field.error)]]">
 
-                <label for$="[[field.name]]" class="control-label col-md-2">[[field.label]]</label>
+                <label for$="[[field.name]]"
+                       class="control-label col-md-2">[[field.label]]</label>
 
                 <template is="dom-if" if="[[_equals(field.type, 'string')]]">
                   <div class="col-md-6">
                     <input id$="[[field.name]]"
                            class="form-control"
+                           value="[[_itemAttribute(item, field.name)]]"
+                           on-input="_updateStringAttribute">
+                  </div>
+                </template>
+                <template is="dom-if" if="[[_equals(field.type, 'password')]]">
+                  <div class="col-md-6">
+                    <input id$="[[field.name]]"
+                           class="form-control"
+                           type="password"
+                           autocomplete="off"
                            value="[[_itemAttribute(item, field.name)]]"
                            on-input="_updateStringAttribute">
                   </div>
