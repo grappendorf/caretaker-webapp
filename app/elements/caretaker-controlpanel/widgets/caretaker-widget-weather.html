@@ -2,14 +2,12 @@
 
 <dom-module id="caretaker-widget-weather">
 
+  <link rel="import" type="css" href="caretaker-widget-weather.css">
+
   <template>
-
-    <link href="caretaker-widget-weather.css" rel="stylesheet">
-
     <current-weather lon="7.45" lat="51.51" wind suntimes
                      minmax chump conditiontext
                      app-id="[[widget.api_key]]"></current-weather>
-
   </template>
 
   <script src="caretaker-widget-weather.js"></script>
