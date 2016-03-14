@@ -37,3 +37,5 @@ Polymer
       switch e.detail.event
         when 'devices.connection'
           @_updateDevivesList()
+        when 'devices.register'
+          @_updateDevivesList()
