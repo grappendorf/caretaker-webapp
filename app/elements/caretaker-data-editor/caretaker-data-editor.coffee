@@ -32,7 +32,7 @@ Polymer
           @processing = false
           @item = result.data
           resolve(@item)
-        , (error) =>
+        , (error) ->
           reject(error)
       else
         @item = {}
