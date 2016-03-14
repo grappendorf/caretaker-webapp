@@ -49,7 +49,14 @@ I18n.translations["en"] = I18n.extend((I18n.translations["en"] || {}), {
     "building": {"description": "Description", "name": "Name"},
     "cipcam_device": {"password": "Password", "refresh_interval": "Refresh interval", "user": "User"},
     "dashboard": {"default": "Default", "name": "Name", "user": {"name": "User"}},
-    "device": {"address": "Address", "description": "Description", "name": "Name", "type": "Type", "uuid": "UUID"},
+    "device": {
+      "address": "Address",
+      "description": "Description",
+      "name": "Name",
+      "port": "Port",
+      "type": "Type",
+      "uuid": "UUID"
+    },
     "device_script": {
       "description": "Description",
       "enabled": "Enabled",
@@ -439,7 +446,14 @@ I18n.translations["de"] = I18n.extend((I18n.translations["de"] || {}), {
     "building": {"description": "Beschreibung", "name": "Name"},
     "cipcam_device": {"password": "Passwort", "refresh_interval": "Aktualisierung", "user": "Benutzer"},
     "dashboard": {"default": "Standard", "name": "Name", "user": {"name": "Benutzer"}},
-    "device": {"address": "Adresse", "description": "Beschreibung", "name": "Name", "type": "Typ", "uuid": "UUID"},
+    "device": {
+      "address": "Adresse",
+      "description": "Beschreibung",
+      "name": "Name",
+      "port": "Port",
+      "type": "Typ",
+      "uuid": "UUID"
+    },
     "device_script": {
       "description": "Beschreibung",
       "enabled": "Aktiv",
