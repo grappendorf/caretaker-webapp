@@ -1,4 +1,10 @@
 .git
 .idea
-node_modules
+app/*
+!app/index.html.tmpl
+bin
 build
+features
+node_modules
+public/components
+public/test

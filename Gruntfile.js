@@ -102,28 +102,6 @@ module.exports = function(grunt) {
       }
     },
 
-    dock: {
-      options: {
-        docker: {
-          socketPath: '/var/run/docker.sock'
-        },
-        images: {
-          'caretaker-webapp': {
-            dockerfile: '.',
-            options: {
-              start: {
-                "Env": [
-                  "WEBSOCKET_URL=ws://127.0.0.1:3000/websocket",
-                  "API_URL=http://127.0.0.1:3000"
-                ],
-                "PortBindings": {"80/tcp": [{"HostPort": "8080"}]}
-              }
-            }
-          }
-        }
-      }
-    },
-
     htmlbuild: {
       dist: {
         cwd: 'app/elements',
@@ -136,8 +114,7 @@ module.exports = function(grunt) {
           }
         }
       }
-    }
-    ,
+    },
 
     less: {
       dist: {
@@ -147,8 +124,7 @@ module.exports = function(grunt) {
           }
         })
       }
-    }
-    ,
+    },
 
     replace: {
       indexHtmlForTest: {
@@ -161,59 +137,66 @@ module.exports = function(grunt) {
           from: /Grapp.I18NJsBehavior.i18nSetLocale\(.+\)/,
           to: 'Grapp.I18NJsBehavior.i18nSetLocale("en")'
         }, {
+          from: /{{getv "\/websocket\/url"}}/,
+          to: 'ws://localhost:3000/websocket'
+        }, {
           from: /{{getv "\/api\/url"}}/,
           to: 'http://localhost:' + process.env["GRUNT_CONNECT_PORT"] + '/api'
         }]
-      }
-      ,
+      },
       indexHtmlForConnect: {
         src: 'app/index.html.tmpl',
         dest: 'public/index.html',
         replacements: [{
-          from: /{{getv "\/websocket\/url"}}/, to: 'ws://127.0.0.1:3000/websocket'
+          from: /{{getv "\/websocket\/url"}}/,
+          to: 'ws://localhost:3000/websocket'
         }, {
-          from: /{{getv "\/api\/url"}}/, to: 'http://127.0.0.1:3000'
+          from: /{{getv "\/api\/url"}}/,
+          to: 'http://localhost:3000'
         }]
       }
-    }
-    ,
+    },
 
     shell: {
       cucumber: {
         command: 'node node_modules/cucumber/bin/cucumber.js \
                   -r features/step_definitions -r features/support \
                   -f pretty -t ~@ignore --coffee'
-      }
-      ,
+      },
       test: {
         command: 'xvfb-run -a ./bin/grunt all-test'
+      },
+      dockerworkspace: {
+        command: 'docker build -t grappendorf/caretaker-webapp:workspace' +
+        ' -f docker/Dockerfile.workspace .',
+      },
+      dockerimage: {
+        command: 'docker build -t grappendorf/caretaker-webapp:latest' +
+        ' -f docker/Dockerfile . && ' +
+        'docker tag grappendorf/caretaker-webapp:latest ' +
+        'grappendorf/caretaker-webapp:' + pkg.version
       }
-    }
-    ,
+    },
 
     watch: {
       stylesheets_less: {
         files: ['app/**/*.less'],
         tasks: ['newer:less', 'newer:htmlbuild', 'html-inline']
-      }
-      ,
+      },
       scripts: {
         files: ['app/**/*.coffee'],
         tasks: ['newer:coffee', 'newer:htmlbuild', 'html-inline']
-      }
-      ,
+      },
       html: {
         files: 'app/**/*.html',
         tasks: ['newer:htmlbuild', 'html-inline']
-      }
-      ,
+      },
       tests: {
         files: 'test/*.html',
         tasks: []
       }
     }
-  })
-  ;
+  });
 
   grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-coffeelint');
@@ -224,7 +207,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-conventional-changelog');
-  grunt.loadNpmTasks('grunt-dock');
   grunt.loadNpmTasks('grunt-html-build');
   grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-shell');
@@ -235,7 +217,12 @@ module.exports = function(grunt) {
       ['newer:less', 'newer:coffeelint', 'newer:coffee', 'newer:htmlbuild', 'html-inline',
         'newer:copy:images', 'newer:copy:javascripts', 'newer:copy:stylesheets']);
 
-  grunt.registerTask('cucumber-test-run', 'Run the cucumber tests', function() {
+  grunt.registerTask('docker-workspace', 'Build a docker workspace image',
+      ['shell:dockerworkspace']);
+  grunt.registerTask('docker-image', 'Build a docker image',
+      ['shell:dockerimage']);
+
+  grunt.registerTask('test-cucumber-run', 'Run the cucumber tests', function() {
     grunt.event.once('connect.tests.listening', function(host, port) {
       process.env['GRUNT_CONNECT_PORT'] = port;
       grunt.task.run('replace:indexHtmlForTest');
@@ -243,7 +230,7 @@ module.exports = function(grunt) {
     });
     grunt.task.run('connect:tests');
   });
-  grunt.registerTask('cucumber-test', ['build', 'cucumber-test-run']);
+  grunt.registerTask('test-cucumber', ['build', 'test-cucumber-run']);
 
   grunt.registerTask('test', 'Test the web application', ['shell:test']);
 
@@ -268,9 +255,9 @@ module.exports = function(grunt) {
       }
     });
   });
-  grunt.registerTask('wct-test', ['build', 'wct-test-run']);
+  grunt.registerTask('test-wct', ['build', 'wct-test-run']);
 
-  grunt.registerTask('all-test', 'Test the web application', ['wct-test', 'cucumber-test']);
+  grunt.registerTask('test-all', 'Test the web application', ['test-wct', 'test-cucumber']);
 
   grunt.task.renameTask('bump', 'bumpversion');
 

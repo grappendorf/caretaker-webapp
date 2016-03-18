@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+docker run -d --name caretaker-webapp \
+  --net caretaker \
+  -p 8000:80 \
+  -e API_URL=http://localhost:3000 \
+  -e WEBSOCKET_URL=ws://localhost:3000/websocket \
+  grappendorf/caretaker-webapp:latest

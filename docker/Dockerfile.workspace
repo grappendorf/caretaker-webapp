@@ -1,0 +1,24 @@
+FROM nginx:1.8
+MAINTAINER Dirk Grappendorf <dirk@grappendorf.net>
+
+# Install additional software
+RUN apt-get update -qq
+RUN apt-get install -qq curl git
+RUN curl -sL https://deb.nodesource.com/setup_5.x | bash -
+RUN apt-get install -qq nodejs
+COPY docker/run-workspace.sh /bin/
+
+# Link nginx html dir to /app/public
+RUN rm -rf /usr/share/nginx/html
+RUN ln -s /app/public /usr/share/nginx/html
+
+# Add a user with uid 100 and gid 1000
+RUN groupadd --gid 1000 user
+RUN useradd --uid 1000 --gid 1000 --create-home user
+USER user
+
+# Project directory will be mounted to /app
+VOLUME /app
+WORKDIR /app
+
+ENTRYPOINT ["run-workspace.sh"]

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+docker run -it --rm --name workspace-caretaker-webapp \
+  -v $PWD:/app \
+  --net caretaker \
+  -p 8000:8000 \
+  grappendorf/caretaker-webapp:workspace
