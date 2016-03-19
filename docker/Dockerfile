@@ -8,6 +8,7 @@ RUN curl -sL https://deb.nodesource.com/setup_5.x | bash -
 RUN apt-get install -qq nodejs
 COPY docker/confd-0.11.0-linux-amd64 /bin/confd
 COPY docker/run.sh /bin/
+COPY docker/nginx.conf /etc/nginx/
 
 # Link nginx html dir to /app/public
 RUN rm -rf /usr/share/nginx/html
