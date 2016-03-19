@@ -304,7 +304,7 @@ I18n.translations["en"] = I18n.extend((I18n.translations["en"] || {}), {
     "cipcam_device": {"one": "Camera", "other": "Cameras"},
     "dashboard": {"one": "Dashboard", "other": "Dashboards"},
     "device": {"one": "Device", "other": "Devices"},
-    "device_actions": {"one": "Action", "other": "Actions"},
+    "device_action": {"one": "Action", "other": "Actions"},
     "device_script": {"one": "Script", "other": "Scripts"},
     "dimmer_device": {"one": "Dimmer", "other": "Dimmer"},
     "dimmer_rgb_device": {"one": "RGB Dimmer", "other": "RGB Dimmer"},
