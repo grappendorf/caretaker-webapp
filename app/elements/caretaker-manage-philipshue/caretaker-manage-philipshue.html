@@ -92,19 +92,21 @@
           <th>[[i18n('attributes.philips_hue.light.reachable')]]</th>
           <th>[[i18n('attributes.philips_hue.light.uniqueid')]]</th>
         </tr>
-        <tr is="dom-repeat" items="[[bridge.lights]]" as="light">
-          <td class="editable" on-tap="_editName">
-            <span>[[light.name]]</span>
-            <grapp-fa-icon icon="pencil"></grapp-fa-icon>
-          </td>
-          <td>[[light.type]]</td>
-          <td>
-            <template is="dom-if" if="[[light.state.reachable]]">
-              <grapp-fa-icon icon="check"></grapp-fa-icon>
-            </template>
-          </td>
-          <td>[[light.uniqueid]]</td>
-        </tr>
+        <template is="dom-repeat" items="[[bridge.lights]]" as="light">
+          <tr>
+            <td class="editable" on-tap="_editName">
+              <span>[[light.name]]</span>
+              <grapp-fa-icon icon="pencil"></grapp-fa-icon>
+            </td>
+            <td>[[light.type]]</td>
+            <td>
+              <template is="dom-if" if="[[light.state.reachable]]">
+                <grapp-fa-icon icon="check"></grapp-fa-icon>
+              </template>
+            </td>
+            <td>[[light.uniqueid]]</td>
+          </tr>
+        </template>
       </table>
       <div class="layout horizontal end-justified">
         <button class="btn btn-primary" on-tap="_synchronize">
