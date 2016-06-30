@@ -13,7 +13,7 @@ Polymer
 
   _reloadImage: ->
     if document.visibilityState == 'visible'
-      @$.imageRequest.go()
+      @$.imageRequest.generateRequest()
     @async @_reloadImage, null, @device.refresh_interval * 1000
 
   _updateImage: (e) ->
