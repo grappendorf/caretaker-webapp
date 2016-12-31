@@ -16,6 +16,6 @@ Polymer
     unless @$.knob.press == 1
       @value = e.state
 
-  _valueChanged: ->
+  _sendValue: ->
     if @$.knob.press == 1
-      @websocket.trigger 'device.state', {id: @device.id, state: @value}
+      @websocket.trigger 'device.state', {id: @device.id, state: {value: @$.knob.value}}
